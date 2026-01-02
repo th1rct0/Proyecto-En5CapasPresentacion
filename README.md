@@ -357,6 +357,88 @@ Tambien un metodo en el Cuadro de texto para buscar al presionar enter.
 <img width="814" height="640" alt="image" src="https://github.com/user-attachments/assets/edf4390e-110b-4c32-829d-34e735befe50" />
 
 Presentacion de la informacion, se busca desde el ID presionando enter.
+    
+    
+    Metodo para eliminar en N_Customer.cs
+   public Boolean Delete(int CustomerId)
+        {
+            return D_Cus.Delete(CustomerId); // Method to delete a customer by ID via the Data Access Layer
+        }
+
+
+
+En D_Customer.cs se Agrega el Metodo:
+   public Boolean Delete(int CustomerId)
+        {
+
+            //##DATOS TIENE QUE SER EN LA CLASE D_CUSTOMER
+
+            SqlCommand cmd = new SqlCommand();
+            Boolean vRes = false;
+            int vCant = -1;
+
+            try
+            {
+                cmd = CrearComando("Customer_Del"); //Se crea el comando con el parametro almacnado
+                cmd.Parameters.AddWithValue("@CustomerId", CustomerId);//se pasa el parametro , con lo que trae el metodo CustomerId
+
+                AbrirConexion();
+                vCant = Ejecuta_Accion(ref cmd);
+
+                if (vCant > 0)
+                {
+                    vRes = true;
+                }
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception(Ex.Message, Ex);
+
+            }
+            finally
+            {
+                cmd.Dispose();
+                CerrarConexion();
+            }
+            return vRes;
+
+        }
+
+    En el boton de borrar el Codigo:
+    private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            int vCustId = Convert.ToInt32((txtCustomerId.Text == string.Empty) ? "0": txtCustomerId.Text);
+
+            if(vCustId == 0) 
+            {
+                MessageBox.Show("No ha seleccionado registro a Borrar");
+                return;
+            }
+            if(MessageBox.Show("Procede a ELiminar un registro. Continuar?","Mucho Cuidado",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                if (oCliente.Delete(vCustId))
+                {
+                    MessageBox.Show("Registro ELiminado Satisfactoriamente");
+                    IniDG();
+
+                }
+                else
+                {
+                    MessageBox.Show("Error Eliminando Registro");
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+ 
+
 <img width="814" height="640" alt="image" src="https://github.com/th1rct0/Proyecto-En5CapasPresentacion/blob/main/proyectoencapapresentainformacion.png" />
 
 

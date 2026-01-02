@@ -4,6 +4,7 @@ Modulo de presentación terminado, consulta desde el Id y presentación de la in
 #FORMULARIO
 
 
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.Data.SqlClient;
 using Entidades;
-
 
 namespace VT_Ca
 {
@@ -139,7 +138,7 @@ namespace VT_Ca
     }
 }
 
-#P_Cus
+P_Cus
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -176,7 +175,7 @@ namespace VT_Ca
 }
 
 
-#######D_Customer
+D_Customer
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -311,7 +310,7 @@ namespace Datos
 }
 
 
-#########N_Customer
+N_Customer
 using System;
 using System.Collections.Generic;
 using System.Linq;

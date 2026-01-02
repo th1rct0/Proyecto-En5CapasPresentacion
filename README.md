@@ -1,7 +1,7 @@
 # Proyecto-En5CapasPresentacion
 Modulo de presentación terminado, consulta desde el Id y presentación de la información en el formulario
 
-####FORMULARIO
+#FORMULARIO
 
 
 using System;
@@ -139,7 +139,7 @@ namespace VT_Ca
     }
 }
 
-################P_Cus
+#P_Cus
 using System;
 using System.Collections.Generic;
 using System.Linq;
